@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="Knowte.SettingsModule.Views.SettingsAdvanced"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             xmlns:prismMvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Wpf"
+             xmlns:presentationutils="clr-namespace:Knowte.Common.Presentation.Utils;assembly=Knowte.Common"
+             xmlns:dc="clr-namespace:Digimezzo.WPFControls;assembly=Digimezzo.WPFControls"
+             prismMvvm:ViewModelLocator.AutoWireViewModel="True">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <StackPanel.Resources>
+                <presentationutils:BindingProxy x:Key="ExportProxy" Data="{DynamicResource Language_Export}"/>
+                <presentationutils:BindingProxy x:Key="BackupProxy" Data="{DynamicResource Language_Backup}"/>
+                <presentationutils:BindingProxy x:Key="ImportProxy" Data="{DynamicResource Language_Import}"/>
+                <presentationutils:BindingProxy x:Key="RestoreProxy" Data="{DynamicResource Language_Restore}"/>
+                <presentationutils:BindingProxy x:Key="ChangeProxy" Data="{DynamicResource Language_Change}"/>
+                <presentationutils:BindingProxy x:Key="MoveProxy" Data="{DynamicResource Language_Move}"/>
+                <presentationutils:BindingProxy x:Key="ResetProxy" Data="{DynamicResource Language_Reset}"/>
+            </StackPanel.Resources>
+            <!-- Notes in jumplist -->
+            <Label Content="{DynamicResource Language_Jump_List}" FontSize="22" FontWeight="Light" Foreground="{DynamicResource RG_AccentBrush}"/>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <Label Content="{DynamicResource Language_Number_Of_Notes_In_Jumplist}"/>
+                <ComboBox x:Name="ComboBoxNotesInJumpList" Padding="0" Margin="5,0,0,0" Width="60" Height="30" HorizontalAlignment="Left" VerticalContentAlignment="Center" ItemsSource="{Binding NumberOfNotesInJumpList}" SelectedItem="{Binding SelectedNumberOfNotesInJumpList}"/>
+            </StackPanel>
+            <Grid Margin="0,20,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="Button"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,5" Content="{DynamicResource Language_Export}" FontSize="22" FontWeight="Light" Foreground="{DynamicResource RG_AccentBrush}"/>
+                <Button Grid.Row="1" Grid.Column="0" Margin="5,0,10,0" HorizontalAlignment="Stretch" Content="{Binding Source={StaticResource ExportProxy}, Path=Data, Converter={StaticResource AddEllipsisConverter}}" Style="{StaticResource ColoredButton}" Command="{Binding ExportCommand}"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{DynamicResource Language_Export_Description}" Foreground="{DynamicResource RG_BlackBrush}" VerticalAlignment="Center"/>
+                <Label Grid.Row="2" Grid.ColumnSpan="2" Margin="0,20,0,5" Content="{DynamicResource Language_Backup}" FontSize="22" FontWeight="Light" Foreground="{DynamicResource RG_AccentBrush}"/>
+                <Button Grid.Row="3" Grid.Column="0" Margin="5,0,10,0" HorizontalAlignment="Stretch" Content="{Binding Source={StaticResource BackupProxy}, Path=Data, Converter={StaticResource AddEllipsisConverter}}" Style="{StaticResource ColoredButton}" Command="{Binding BackupCommand}"/>
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="{DynamicResource Language_Backup_Description}" Foreground="{DynamicResource RG_BlackBrush}" VerticalAlignment="Center"/>
+                <Label Grid.Row="4" Grid.ColumnSpan="2"  Margin="0,20,0,5" Content="{DynamicResource Language_Restore}" FontSize="22" FontWeight="Light" Foreground="{DynamicResource RG_AccentBrush}"/>
+                <Button Grid.Row="5" Grid.Column="0" Margin="5,0,10,0" HorizontalAlignment="Stretch" Content="{Binding Source={StaticResource RestoreProxy}, Path=Data, Converter={StaticResource AddEllipsisConverter}}" Style="{StaticResource ColoredButton}" Command="{Binding RestoreCommand}"/>
+                <TextBlock Grid.Row="5" Grid.Column="1" Text="{DynamicResource Language_Restore_Description}" Foreground="{DynamicResource RG_BlackBrush}" VerticalAlignment="Center"/>
+                <Button Grid.Row="6" Grid.Column="0" Margin="5,10,10,0" HorizontalAlignment="Stretch" Content="{Binding Source={StaticResource ImportProxy}, Path=Data, Converter={StaticResource AddEllipsisConverter}}" Style="{StaticResource ColoredButtonSubtle}" Command="{Binding ImportCommand}"/>
+                <TextBlock Grid.Row="6" Grid.Column="1" Margin="0,10,0,0" Text="{DynamicResource Language_Import_Description}" Foreground="{DynamicResource RG_BlackBrush}" VerticalAlignment="Center"/>
+                <Label Grid.Row="7" Grid.ColumnSpan="2" Margin="0,20,0,5" Content="{DynamicResource Language_Storage}" FontSize="22" FontWeight="Light" Foreground="{DynamicResource RG_AccentBrush}"/>
+                <StackPanel Grid.Row="8" Grid.ColumnSpan="2" Margin="5,0,0,0"  Orientation="Horizontal">
+                    <TextBlock Foreground="{DynamicResource RG_ForegroundBrush}" Margin="0,0,0,10" Text="{DynamicResource Language_Your_Notes_Are_Stored_Here}"/>
+                    <TextBlock Foreground="{DynamicResource RG_ForegroundBrush}" Text=":" Margin="0,0,5,0"/>
+                    <Button Style="{StaticResource LinkButton}" Content="{Binding StorageLocation}" Command="{Binding OpenStorageLocationCommand}"/>
+                </StackPanel>
+                <Button Grid.Row="9" Grid.Column="0" Margin="5,0,10,0" HorizontalAlignment="Stretch" Content="{Binding Source={StaticResource MoveProxy}, Path=Data, Converter={StaticResource AddEllipsisConverter}}" Style="{StaticResource ColoredButton}" Command="{Binding MoveStorageLocationCommand}"/>
+                <TextBlock Grid.Row="9" Grid.Column="1" Text="{DynamicResource Language_Move_Description}" Foreground="{DynamicResource RG_BlackBrush}" VerticalAlignment="Center"/>
+                <Button Grid.Row="10" Grid.Column="0" Margin="5,10,10,0" HorizontalAlignment="Stretch" Content="{Binding Source={StaticResource ChangeProxy}, Path=Data, Converter={StaticResource AddEllipsisConverter}}" Style="{StaticResource ColoredButtonSubtle}" Command="{Binding ChangeStorageLocationCommand}"/>
+                <TextBlock Grid.Row="10" Grid.Column="1" Margin="0,10,0,0" Text="{DynamicResource Language_Change_Description}" Foreground="{DynamicResource RG_BlackBrush}" VerticalAlignment="Center"/>
+                <Button Grid.Row="11" Grid.Column="0" Margin="5,10,10,0" HorizontalAlignment="Stretch" Content="{Binding Source={StaticResource ResetProxy}, Path=Data, Converter={StaticResource AddEllipsisConverter}}" Style="{StaticResource ColoredButtonSubtle}" Command="{Binding ResetStorageLocationCommand}"/>
+                <TextBlock Grid.Row="11" Grid.Column="1" Margin="0,10,0,0" Text="{DynamicResource Language_Reset_Description}" Foreground="{DynamicResource RG_BlackBrush}" VerticalAlignment="Center"/>
+            </Grid>
+            <Label Margin="0,20,0,0" Content="{DynamicResource Language_Change_Storage_Location_From_Main}"/>
+            <dc:Windows10ToggleSwitch x:Name="CheckBoxChangeStorageLocationFromMain" HorizontalAlignment="Left" Margin="5,5,0,0" FontSize="12" OnLabel="{DynamicResource Language_Yes}" OffLabel="{DynamicResource Language_No}" IsChecked="{Binding CheckBoxChangeStorageLocationFromMainChecked}" Accent="{DynamicResource RG_AccentBrush}"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

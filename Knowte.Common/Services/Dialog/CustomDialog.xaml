@@ -1,0 +1,23 @@
+﻿<dc:BorderlessWindows8Window x:Class="Knowte.Common.Services.Dialog.CustomDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+    xmlns:dc="clr-namespace:Digimezzo.WPFControls;assembly=Digimezzo.WPFControls"
+    Background="Transparent"
+    Foreground="{DynamicResource RG_BlackBrush}"
+    ShowWindowControls="False">
+
+    <Border Background="{DynamicResource RG_WhiteBrush}" Margin="-1">
+        <DockPanel Margin="16">
+            <TextBlock x:Name="TextBlockTitle" DockPanel.Dock="Top" FontWeight="Light" FontSize="28" Foreground="{DynamicResource RG_AccentBrush}"/>
+            <DockPanel x:Name="Content" Margin="0,15,0,0">
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right" Margin="0,30,0,0">
+                    <Button x:Name="ButtonOK" Style="{StaticResource ColoredButton}" IsDefault="True" Click="ButtonOK_Click"/>
+                    <Button x:Name="ButtonCancel" Style="{StaticResource ColoredButton}" IsCancel="True" Click="ButtonCancel_Click" Margin="10,0,0,0"/>
+                </StackPanel>
+                <ContentControl x:Name="CustomContent"/>
+            </DockPanel>
+        </DockPanel>
+    </Border>
+</dc:BorderlessWindows8Window>
+

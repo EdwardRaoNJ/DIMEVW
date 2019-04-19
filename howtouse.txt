@@ -1,0 +1,1 @@
+For the media/video files, it will auto catch whatever inside folder Knowte-master\VideoViewerDemo\media, known playable formats of video includes .avi, .wmv, .mp4. Other kinds might work but not tested yet.
